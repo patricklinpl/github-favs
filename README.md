@@ -1,1 +1,1 @@
-# github-search
+# github-favs
