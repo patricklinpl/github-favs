@@ -1,5 +1,5 @@
 {
-  "name": "github-search",
+  "name": "github-favs",
   "version": "0.1.0",
   "description": "Search Github repositories, favourite repos, manage favourites.",
   "dependencies": {
