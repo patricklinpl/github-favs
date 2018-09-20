@@ -1,0 +1,33 @@
+{
+  "name": "github-search",
+  "version": "0.1.0",
+  "description": "Search Github repositories, favourite repos, manage favourites.",
+  "dependencies": {
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-scripts": "1.1.5",
+    "axios": "^0.16.0",
+    "query-string": "^4.3.4",
+    "prop-types": "^15.5.4",
+    "react-router-dom": "^4.0.0"
+  },
+  "author": "Patrick Lin",
+  "license": "MIT",
+  "babel": {
+    "presets": [
+      "env",
+      "react"
+    ]
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.0",
+    "babel-preset-env": "^1.2.2",
+    "babel-preset-react": "^6.23.0"
+  }
+}
