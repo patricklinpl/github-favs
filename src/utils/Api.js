@@ -13,4 +13,14 @@ const searchRepo = (query) => (
     )
 )
 
-export default searchRepo
+const getTag = (url) => {
+  const cleanUrl = url.replace('https://api.github.com/', '')
+  return instance.get(cleanUrl).then(res => {
+    if (res['data'].length > 0 && res['data'][0].hasOwnProperty['name']) {
+      return res['data'][0]['name']
+    }
+    return ''
+  })
+}
+
+export {searchRepo, getTag}
