@@ -10,6 +10,7 @@ export default class Search extends Component {
 
   setQuery (event) {
     this.setState({ query: event.target.value })
+    this.props.queryChange(event.target.value)
   }
 
   render () {
@@ -27,5 +28,6 @@ export default class Search extends Component {
 }
 
 Search.propTypes = {
-  handleSearch: PropTypes.func.isRequired
+  handleSearch: PropTypes.func.isRequired,
+  queryChange: PropTypes.func.isRequired
 }
