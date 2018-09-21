@@ -19,11 +19,11 @@ export default class Home extends Component {
     console.log(state)
   }
 
-  handleSearch (state) {
+  handleSearch (query) {
     return event => {
       event.preventDefault()
-      this.setState({ query: state.query })
-      searchRepo(state.query).then(result => {
+      this.setState({ query: query })
+      searchRepo(query).then(result => {
         this.setState({ searchResults:
           result.map(repo => (
             (({ full_name, language, tags_url, url }) => ({ full_name, language, tags_url: getTag(tags_url), url }))(repo))
