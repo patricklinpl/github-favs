@@ -16,7 +16,7 @@ export default class Home extends Component {
   }
 
   queryChange (state) {
-    console.log(state)
+    this.setState({ searchResults: [] })
   }
 
   handleSearch (query) {
@@ -24,17 +24,18 @@ export default class Home extends Component {
       event.preventDefault()
       this.setState({ query: query })
       searchRepo(query).then(result => {
-        this.setState({ searchResults:
-          result.map(repo => (
-            (({ full_name, language, tags_url, url }) => ({ full_name, language, tags_url: getTag(tags_url), url }))(repo))
-          )
+        let allRepos = result.map(repo => ((({ full_name, language, tags_url, url }) => ({ full_name, language, tags_url, url }))(repo)))
+        allRepos = allRepos.forEach(repo => {
+          getTag(repo['tags_url']).then(res => {
+            repo['tag'] = res
+          })
+          this.setState({ searchResults: allRepos })
         })
       })
     }
   }
 
   render () {
-    console.log(this.state.searchResults)
     return (
       <div className='app-container'>
         <div className='header'>
@@ -44,7 +45,7 @@ export default class Home extends Component {
           <h2>Search Bar</h2>
           <Search handleSearch={this.handleSearch} queryChange={this.queryChange} />
           <p>Results</p>
-          <Repos />
+          {this.state.searchResults.length > 0 ? <Repos searchResults={this.state.searchResults} /> : <div />}
         </div>
         <div className='split right'>
           <h2>Favs</h2>
