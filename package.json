@@ -4,6 +4,7 @@
   "description": "Search Github repositories, favourite repos, manage favourites.",
   "dependencies": {
     "axios": "^0.16.0",
+    "bluebird": "^3.5.2",
     "prop-types": "^15.5.4",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",

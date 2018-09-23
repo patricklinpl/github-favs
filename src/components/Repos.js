@@ -13,7 +13,7 @@ const RepoGrid = props => (
         </tr>
         {props.searchResults.map(repo => (
           <tr>
-            <td><a href={repo['url']}>{repo['full_name']}</a></td>
+            <td><a href={repo['html_url']}>{repo['full_name']}</a></td>
             <td>{repo['language']}</td>
             <td>{repo['tag']}</td>
             <td />

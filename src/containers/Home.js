@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import {searchRepo, getTag} from '../utils/Api'
+import Promise from 'bluebird'
+import { searchRepo, getTag } from '../utils/Api'
 import Search from '../components/Search'
 import Repos from '../components/Repos'
 
@@ -11,11 +12,12 @@ export default class Home extends Component {
       searchResults: [],
       favoriteRepos: []
     }
-    this.handleSearch = this.handleSearch.bind(this)
     this.queryChange = this.queryChange.bind(this)
+    this.handleSearch = this.handleSearch.bind(this)
+    this.handleTags = this.handleTags.bind(this)
   }
 
-  queryChange (state) {
+  queryChange () {
     this.setState({ searchResults: [] })
   }
 
@@ -24,15 +26,19 @@ export default class Home extends Component {
       event.preventDefault()
       this.setState({ query: query })
       searchRepo(query).then(result => {
-        let allRepos = result.map(repo => ((({ full_name, language, tags_url, url }) => ({ full_name, language, tags_url, url }))(repo)))
-        allRepos = allRepos.forEach(repo => {
-          getTag(repo['tags_url']).then(res => {
-            repo['tag'] = res
-          })
-          this.setState({ searchResults: allRepos })
-        })
+        const filteredRes = result.map(repo => ((({ full_name, language, tags_url, html_url }) => ({ full_name, language, tags_url: getTag(tags_url), html_url }))(repo)))
+        this.handleTags(filteredRes)
       })
     }
+  }
+
+  handleTags (repos) {
+    var promises = repos.map(repo => 
+      repo.tags_url.then(tag => ({...repo, tag}))
+    )
+    Promise.all(promises).then((results) => {
+      this.setState({ searchResults: results })
+    })
   }
 
   render () {
