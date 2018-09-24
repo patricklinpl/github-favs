@@ -5,23 +5,21 @@ body {
 }
 
 .header {
-  bottom: 20px;
   height:100%;
   overflow: hidden;
   background:#8A2BE2;
   border:10px solid #8A2BE2;
   width:100%;
-  margin:20px auto;
   padding: 20px 10px;
   position: relative;
 }
 
 .split {
-  height: 90%;
+  height: 100%;
   width: 50%;
   position: fixed;
   z-index: 1;
-  top: 5;
+
   overflow-x: hidden;
   padding-top: 20px;
 }
@@ -32,6 +30,7 @@ body {
 
 .right {
   right: 0;
+  background:#E6E6FA;
 }
 
 .searchGrid {
@@ -43,18 +42,28 @@ body {
   border: 1px solid black;
   padding: 20px; 
   width: 65%;
-  height: 5px; 
-  font-size: 15px;
+  font-size: 14px;
+  float: left;
 }
 
 .searchBtn {
   float: right;
   color: white;
-  padding: 6px;
-  width: 150px;
+  width: 20%;
   border-radius: 5px;
   background:#8A2BE2;
-  border:10px solid #8A2BE2;
-  margin-right: 50px;
+  border:18px solid #8A2BE2;
+  margin-right: 5%;
   font-size: 15px;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 10px 0;
+  text-align: left;
+  font-size: 15px;
+}
+
+td {
+  padding: 10px 0;
 }

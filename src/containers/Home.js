@@ -46,7 +46,6 @@ export default class Home extends Component {
         <div className='split left'>
           <div className='searchGrid'>
             <Search handleSearch={this.handleSearch} queryChange={this.queryChange} />
-            <br/><br/><br/><br/>
             {this.state.searchResults.length > 0 ? <Repos searchResults={this.state.searchResults} /> : <div />}
           </div>
         </div>

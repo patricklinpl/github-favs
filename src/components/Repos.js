@@ -1,28 +1,40 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-const RepoGrid = props => (
-  <div>
-    <table border='1'>
-      <tbody>
-        <tr>
-          <th>Name</th>
-          <th>Language</th>
-          <th>Latest Tag</th>
-          <th />
-        </tr>
-        {props.searchResults.map(repo => (
+class RepoGrid extends Component {
+  constructor (props) {
+    super(props)
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  handleClick (e) {
+    e.preventDefault()
+    console.log('The link was clicked.')
+  }
+
+  render () {
+    return (
+      <table className='searchResTable'>
+        <tbody>
           <tr>
-            <td><a href={repo['html_url']}>{repo['full_name']}</a></td>
-            <td>{repo['language']}</td>
-            <td>{repo['tag']}</td>
-            <td />
+            <th>Name</th>
+            <th>Language</th>
+            <th>Latest Tag</th>
+            <th />
           </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-)
+          {this.props.searchResults.map(repo => (
+            <tr>
+              <td><a target='_blank' href={repo['html_url']}>{repo['full_name']}</a></td>
+              <td>{repo['language']}</td>
+              <td>{repo['tag']}</td>
+              <td><a href='#' onClick={this.handleClick}>Add</a></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    )
+  }
+}
 
 RepoGrid.propTypes = {
   searchResults: PropTypes.array.isRequired
@@ -30,9 +42,9 @@ RepoGrid.propTypes = {
 
 export default class Repos extends Component {
   render () {
-    console.log(this.props.searchResults)
     return (
       <div>
+        <br /><br /><br /><br /><br /><br /><br />
         {this.props.searchResults.length > 0 ? <RepoGrid searchResults={this.props.searchResults} /> : <div />}
       </div>
     )
