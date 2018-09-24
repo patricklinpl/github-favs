@@ -3,6 +3,7 @@ import Promise from 'bluebird'
 import { searchRepo, getTag } from '../utils/Api'
 import Search from '../components/Search'
 import Repos from '../components/Repos'
+import Favorites from '../components/Favorites';
 
 export default class Home extends Component {
   constructor (props) {
@@ -41,7 +42,7 @@ export default class Home extends Component {
   handleAddFav (repo) {
     return event => {
       event.preventDefault()
-      console.log(repo)
+      this.setState({favoriteRepos: [...this.state.favoriteRepos, repo]})
     }
   }
 
@@ -58,8 +59,7 @@ export default class Home extends Component {
           </div>
         </div>
         <div className='split right'>
-          <h2>Favs</h2>
-          <p>Repos</p>
+          {this.state.favoriteRepos.length > 0 ? <Favorites favoriteRepos={this.state.favoriteRepos} /> : null}
         </div>
       </div>
     )

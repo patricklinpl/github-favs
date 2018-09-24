@@ -67,3 +67,9 @@ table {
 td {
   padding: 10px 0;
 }
+
+.addFav {
+  cursor:pointer;
+  color:blue;
+  text-decoration:underline;
+}
