@@ -17,7 +17,7 @@ class RepoGrid extends Component {
               <td><a target='_blank' href={repo['html_url']}>{repo['full_name']}</a></td>
               <td>{repo['language']}</td>
               <td>{repo['tag']}</td>
-              <td><span className="addFav" onClick={this.props.handleAddFav(repo)}>Add</span></td>
+              <td><span className="fav" onClick={this.props.handleAddFav(repo)}>Add</span></td>
             </tr>
           ))}
         </tbody>

@@ -17,6 +17,7 @@ export default class Home extends Component {
     this.handleSearch = this.handleSearch.bind(this)
     this.handleTags = this.handleTags.bind(this)
     this.handleAddFav = this.handleAddFav.bind(this)
+    this.handleRmFav = this.handleRmFav.bind(this)
   }
 
   queryChange () {
@@ -42,7 +43,17 @@ export default class Home extends Component {
   handleAddFav (repo) {
     return event => {
       event.preventDefault()
-      this.setState({favoriteRepos: [...this.state.favoriteRepos, repo]})
+      if (this.state.favoriteRepos.indexOf(repo) < 0) {
+        this.setState({favoriteRepos: [...this.state.favoriteRepos, repo]})
+      }
+    }
+  }
+
+  handleRmFav (repo) {
+    return event => {
+      event.preventDefault()
+      const rmIndex = this.state.favoriteRepos.indexOf(repo)
+      this.setState({favoriteRepos: this.state.favoriteRepos.filter((repo, i) => i !== rmIndex)})
     }
   }
 
@@ -59,7 +70,7 @@ export default class Home extends Component {
           </div>
         </div>
         <div className='split right'>
-          {this.state.favoriteRepos.length > 0 ? <Favorites favoriteRepos={this.state.favoriteRepos} /> : null}
+          {this.state.favoriteRepos.length > 0 ? <Favorites favoriteRepos={this.state.favoriteRepos} handleRmFav={this.handleRmFav} /> : <div />}
         </div>
       </div>
     )

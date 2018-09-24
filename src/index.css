@@ -68,7 +68,7 @@ td {
   padding: 10px 0;
 }
 
-.addFav {
+.fav {
   cursor:pointer;
   color:blue;
   text-decoration:underline;
