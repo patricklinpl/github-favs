@@ -15,6 +15,7 @@ export default class Home extends Component {
     this.queryChange = this.queryChange.bind(this)
     this.handleSearch = this.handleSearch.bind(this)
     this.handleTags = this.handleTags.bind(this)
+    this.handleAddFav = this.handleAddFav.bind(this)
   }
 
   queryChange () {
@@ -37,6 +38,13 @@ export default class Home extends Component {
     Promise.all(promises).then((results) => (this.setState({ searchResults: results })))
   }
 
+  handleAddFav (repo) {
+    return event => {
+      event.preventDefault()
+      console.log(repo)
+    }
+  }
+
   render () {
     return (
       <div className='app-container'>
@@ -46,7 +54,7 @@ export default class Home extends Component {
         <div className='split left'>
           <div className='searchGrid'>
             <Search handleSearch={this.handleSearch} queryChange={this.queryChange} />
-            {this.state.searchResults.length > 0 ? <Repos searchResults={this.state.searchResults} /> : <div />}
+            {this.state.searchResults.length > 0 ? <Repos searchResults={this.state.searchResults} handleAddFav={this.handleAddFav} /> : <div />}
           </div>
         </div>
         <div className='split right'>

@@ -2,16 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 class RepoGrid extends Component {
-  constructor (props) {
-    super(props)
-    this.handleClick = this.handleClick.bind(this)
-  }
-
-  handleClick (e) {
-    e.preventDefault()
-    console.log('The link was clicked.')
-  }
-
   render () {
     return (
       <table className='searchResTable'>
@@ -27,7 +17,7 @@ class RepoGrid extends Component {
               <td><a target='_blank' href={repo['html_url']}>{repo['full_name']}</a></td>
               <td>{repo['language']}</td>
               <td>{repo['tag']}</td>
-              <td><a href='#' onClick={this.handleClick}>Add</a></td>
+              <td><a href='#' onClick={this.props.handleAddFav(repo)}>Add</a></td>
             </tr>
           ))}
         </tbody>
@@ -37,7 +27,8 @@ class RepoGrid extends Component {
 }
 
 RepoGrid.propTypes = {
-  searchResults: PropTypes.array.isRequired
+  searchResults: PropTypes.array.isRequired,
+  handleAddFav: PropTypes.func.isRequired
 }
 
 export default class Repos extends Component {
@@ -45,12 +36,13 @@ export default class Repos extends Component {
     return (
       <div>
         <br /><br /><br /><br /><br /><br /><br />
-        {this.props.searchResults.length > 0 ? <RepoGrid searchResults={this.props.searchResults} /> : <div />}
+        {this.props.searchResults.length > 0 ? <RepoGrid searchResults={this.props.searchResults} handleAddFav={this.props.handleAddFav} /> : <div />}
       </div>
     )
   }
 }
 
 Repos.propTypes = {
-  searchResults: PropTypes.array.isRequired
+  searchResults: PropTypes.array.isRequired,
+  handleAddFav: PropTypes.func.isRequired
 }
