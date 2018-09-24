@@ -2,6 +2,7 @@
   "name": "github-favs",
   "version": "0.1.0",
   "description": "Search Github repositories, favourite repos, manage favourites.",
+  "main": "index.js",
   "dependencies": {
     "axios": "^0.16.0",
     "bluebird": "^3.5.2",
@@ -22,6 +23,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "deploy": "npm run build && firebase deploy",
+    "firebase-init": "firebase login && firebase init",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
