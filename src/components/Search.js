@@ -18,8 +18,8 @@ export default class Search extends Component {
       <div className='form'>
         <form onSubmit={this.props.handleSearch(this.state.query)}>
           <div>
-            <input type='text' id='searchBar' value={this.state.query} onChange={this.setQuery} required />
-            <input className='btn' type='submit' value='Submit' />
+            <input className="searchBar" type='text' id='searchBar' value={this.state.query} onChange={this.setQuery} required />
+            <input className='searchBtn' type='submit' value='Search' />
           </div>
         </form>
       </div>

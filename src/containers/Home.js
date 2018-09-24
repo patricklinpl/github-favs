@@ -33,25 +33,22 @@ export default class Home extends Component {
   }
 
   handleTags (repos) {
-    var promises = repos.map(repo => 
-      repo.tags_url.then(tag => ({...repo, tag}))
-    )
-    Promise.all(promises).then((results) => {
-      this.setState({ searchResults: results })
-    })
+    const promises = repos.map(repo => repo.tags_url.then(tag => ({...repo, tag})))
+    Promise.all(promises).then((results) => (this.setState({ searchResults: results })))
   }
 
   render () {
     return (
       <div className='app-container'>
         <div className='header'>
-          <h1 style={{ textAlign: 'center' }}> My Github Favorites </h1>
+          <h1 style={{ textAlign: 'center', color: 'white' }}> My Github Favorites </h1>
         </div>
         <div className='split left'>
-          <h2>Search Bar</h2>
-          <Search handleSearch={this.handleSearch} queryChange={this.queryChange} />
-          <p>Results</p>
-          {this.state.searchResults.length > 0 ? <Repos searchResults={this.state.searchResults} /> : <div />}
+          <div className='searchGrid'>
+            <Search handleSearch={this.handleSearch} queryChange={this.queryChange} />
+            <br/><br/><br/><br/>
+            {this.state.searchResults.length > 0 ? <Repos searchResults={this.state.searchResults} /> : <div />}
+          </div>
         </div>
         <div className='split right'>
           <h2>Favs</h2>

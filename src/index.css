@@ -5,12 +5,14 @@ body {
 }
 
 .header {
+  bottom: 20px;
   height:100%;
-  background:purple;
-  border:10px solid #CCC;
+  overflow: hidden;
+  background:#8A2BE2;
+  border:10px solid #8A2BE2;
   width:100%;
   margin:20px auto;
-  padding: 50px;
+  padding: 20px 10px;
   position: relative;
 }
 
@@ -30,4 +32,29 @@ body {
 
 .right {
   right: 0;
+}
+
+.searchGrid {
+  padding-left: 10%;
+}
+
+.searchBar {
+  border-radius: 10px;
+  border: 1px solid black;
+  padding: 20px; 
+  width: 65%;
+  height: 5px; 
+  font-size: 15px;
+}
+
+.searchBtn {
+  float: right;
+  color: white;
+  padding: 6px;
+  width: 150px;
+  border-radius: 5px;
+  background:#8A2BE2;
+  border:10px solid #8A2BE2;
+  margin-right: 50px;
+  font-size: 15px;
 }
