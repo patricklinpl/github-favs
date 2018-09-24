@@ -14,7 +14,7 @@ class FavGrid extends Component {
           </tr>
           {this.props.favoriteRepos.map(repo => (
             <tr>
-              <td><a href={repo['html_url']}>{repo['full_name']}</a></td>
+              <td><a target='_blank' href={repo['html_url']}>{repo['full_name']}</a></td>
               <td>{repo['language']}</td>
               <td>{repo['tag']}</td>
               <td><span className="fav" onClick={this.props.handleRmFav(repo)}>Remove</span></td>
