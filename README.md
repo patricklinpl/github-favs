@@ -2,7 +2,7 @@
 
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-Search Github repositories, favourite repos, manage favourites. [https://shopify-fall-2018.firebaseapp.com/](https://shopify-fall-2018.firebaseapp.com/)
+Search Github repositories, favourite repos, manage favourites. [https://www.patricklin.ca/shopify](https://www.patricklin.ca/shopify)
 
 ## Requirements
 
