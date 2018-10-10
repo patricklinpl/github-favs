@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 class FavGrid extends Component {
-  render() {
+  render () {
     return (
       <table className='favTable'>
         <tbody>
@@ -17,7 +17,7 @@ class FavGrid extends Component {
               <td><a target='_blank' href={repo['html_url']}>{repo['full_name']}</a></td>
               <td>{repo['language']}</td>
               <td>{repo['tag']}</td>
-              <td><span className="fav" onClick={this.props.handleRmFav(repo)}>Remove</span></td>
+              <td><span className='fav' onClick={this.props.handleRmFav(repo)}>Remove</span></td>
               <td />
             </tr>
           ))}
@@ -33,7 +33,7 @@ FavGrid.propTypes = {
 }
 
 export default class Favorites extends Component {
-  render() {
+  render () {
     return (
       <div>
         {this.props.favoriteRepos.length > 0 ? <FavGrid favoriteRepos={this.props.favoriteRepos} handleRmFav={this.props.handleRmFav} /> : <div />}

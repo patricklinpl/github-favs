@@ -3,7 +3,7 @@ import Promise from 'bluebird'
 import { searchRepo, getTag } from '../utils/Api'
 import Search from '../components/Search'
 import Repos from '../components/Repos'
-import Favorites from '../components/Favorites';
+import Favorites from '../components/Favorites'
 
 export default class Home extends Component {
   constructor (props) {
