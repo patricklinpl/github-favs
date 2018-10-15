@@ -29,7 +29,7 @@ export default class Home extends Component {
       event.preventDefault()
       this.setState({ query: query })
       searchRepo(query).then(result => {
-        const filteredRes = result.map(repo => ((({ full_name, language, tags_url, html_url }) => ({ full_name, language, tags_url: getTag(tags_url), html_url }))(repo)))
+        const filteredRes = result.map(repo => ((({ full_name, language, tags_url, html_url, favs }) => ({ full_name, language, tags_url: getTag(tags_url), html_url, favs: false }))(repo)))
         this.handleTags(filteredRes)
       })
     }
@@ -44,7 +44,16 @@ export default class Home extends Component {
     return event => {
       event.preventDefault()
       if (this.state.favoriteRepos.indexOf(repo) < 0) {
-        this.setState({favoriteRepos: [...this.state.favoriteRepos, repo]})
+        const removeFavs = this.state.searchResults.map(srepo => {
+          if (srepo === repo) {
+            srepo['favs'] = true
+          }
+          return srepo
+        })
+        this.setState({
+          favoriteRepos: [...this.state.favoriteRepos, repo],
+          searchResults: removeFavs
+        })
       }
     }
   }
@@ -53,7 +62,16 @@ export default class Home extends Component {
     return event => {
       event.preventDefault()
       const rmIndex = this.state.favoriteRepos.indexOf(repo)
-      this.setState({favoriteRepos: this.state.favoriteRepos.filter((repo, i) => i !== rmIndex)})
+      const addFavs = this.state.searchResults.map(srepo => {
+        if (srepo === repo) {
+          srepo['favs'] = false
+        }
+        return srepo
+      })
+      this.setState({
+        favoriteRepos: this.state.favoriteRepos.filter((repo, i) => i !== rmIndex),
+        searchRepo: addFavs
+      })
     }
   }
 
