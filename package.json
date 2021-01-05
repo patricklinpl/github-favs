@@ -4,7 +4,7 @@
   "description": "Search Github repositories, favourite repos, manage favourites.",
   "main": "index.js",
   "dependencies": {
-    "axios": "^0.16.0",
+    "axios": "^0.21.1",
     "bluebird": "^3.5.2",
     "express": "^4.16.3",
     "prop-types": "^15.5.4",
